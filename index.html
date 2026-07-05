@@ -1,9 +1,9 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЖЕКА Х LANCE X ХЛЕБ // OFFICIAL</title>
+    <title>ЖЕКА Х LANCER X // ХЛЕБОЗАВОД EVOLUTION MAXIMUM</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
@@ -15,10 +15,22 @@
         }
 
         body {
-            background-color: #141518;
+            background-color: #111215;
             color: #e5e5e5;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        /* Эффект закиси дрожжей (вибрация сайта) */
+        .nitro-active {
+            animation: nitroShake 0.05s infinite alternate;
+            border: 4px solid #ff0033 !important;
+        }
+
+        @keyframes nitroShake {
+            0% { transform: translate(2px, 1px) rotate(0deg); }
+            100% { transform: translate(-1px, -2px) rotate(0.5deg); }
         }
 
         .container {
@@ -27,13 +39,13 @@
             padding: 0 20px;
         }
 
-        /* Шапка в стиле JDM */
+        /* Шапка */
         .main-header {
-            background: linear-gradient(rgba(20, 21, 24, 0.85), rgba(20, 21, 24, 1)), 
+            background: linear-gradient(rgba(17, 18, 21, 0.9), rgba(17, 18, 21, 1)), 
                         url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1200') no-repeat center/cover;
-            padding: 80px 20px;
+            padding: 100px 20px 60px 20px;
             text-align: center;
-            border-bottom: 5px solid #ff0033; /* Красный Лансера */
+            border-bottom: 5px solid #ff0033;
         }
 
         .badge {
@@ -58,7 +70,7 @@
 
         .accent-text {
             color: #ff0033;
-            text-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+            text-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
         }
 
         .slogan {
@@ -68,7 +80,7 @@
             font-size: 1.1rem;
         }
 
-        /* Панель интерактивных приколов */
+        /* Кнопки меню */
         .joke-panel {
             margin-top: 30px;
             display: flex;
@@ -78,10 +90,10 @@
         }
 
         .btn-joke {
-            background: #22252a;
+            background: #1c1e24;
             color: #fff;
             border: 2px solid #ff0033;
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
@@ -95,31 +107,117 @@
             transform: translateY(-2px);
         }
 
-        .btn-joke.bread-btn {
-            border-color: #ffaa00; /* Хлебный цвет */
-        }
-
+        .btn-joke.bread-btn { border-color: #ffaa00; }
         .btn-joke.bread-btn:hover {
             background: #ffaa00;
             color: #000;
             box-shadow: 0 0 15px rgba(255, 170, 0, 0.6);
         }
 
+        .btn-joke.nitro-btn {
+            border-color: #00e5ff;
+            color: #00e5ff;
+        }
+        .btn-joke.nitro-btn:hover {
+            background: #00e5ff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+        }
+
+        /* Вывод сигнала (теперь блок больше, чтобы влезали длинные анекдоты) */
         .horn-text {
-            margin-top: 20px;
-            height: 20px;
+            margin-top: 25px;
+            min-height: 60px;
             color: #ffaa00;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: opacity 0.3s ease;
-            opacity: 0;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            padding: 10px;
+            background: rgba(28, 30, 36, 0.6);
+            border-radius: 6px;
+            border: 1px dashed rgba(255, 170, 0, 0.3);
+            display: none; /* Включается через JS */
         }
 
-        /* Спек-лист Жеки */
-        .specs-section {
-            margin-top: 50px;
+        /* Бортовой компьютер */
+        .dashboard-section {
+            margin-top: 40px;
+            background: #16181d;
+            border: 2px solid #22252c;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
 
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .dash-card {
+            background: #1c1e24;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #ff0033;
+        }
+
+        .dash-card.bread-side { border-left-color: #ffaa00; }
+
+        .dash-card h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .crunch-display {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffaa00;
+            margin-bottom: 10px;
+        }
+
+        .dps-text {
+            min-height: 70px;
+            font-size: 0.95rem;
+            color: #fff;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* ТАБЛИЦА ТО */
+        .table-section {
+            margin-top: 60px;
+        }
+        .lancer-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #1c1e24;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .lancer-table th, .lancer-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2c303b;
+        }
+        .lancer-table th {
+            background: #ff0033;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .lancer-table tr:hover {
+            background: #242830;
+        }
+
+        /* Спеки */
+        .specs-section { margin-top: 60px; }
         .title {
             font-size: 1.8rem;
             font-weight: 900;
@@ -132,7 +230,7 @@
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -141,27 +239,17 @@
             padding: 20px;
             border-radius: 6px;
             border-bottom: 3px solid #2c303b;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
-
-        .spec-card:hover {
-            border-bottom-color: #ff0033;
+        .spec-card:hover { 
+            border-bottom-color: #ffaa00; 
+            transform: scale(1.02);
         }
+        .spec-card h3 { font-size: 0.85rem; color: #ff0033; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; }
+        .spec-card h4 { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
+        .spec-card p { font-size: 0.9rem; color: #aaa; line-height: 1.4; }
 
-        .spec-card h3 {
-            font-size: 0.9rem;
-            color: #888;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .spec-card p {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        /* Зона загрузки фото (В гараж) */
+        /* Загрузка фото */
         .upload-section {
             margin: 60px 0 40px 0;
             background: #1c1e24;
@@ -183,14 +271,9 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+        .btn-upload:hover { background: #ff0033; color: #fff; transform: scale(1.05); }
 
-        .btn-upload:hover {
-            background: #ff0033;
-            color: #fff;
-            transform: scale(1.05);
-        }
-
-        /* Галерея картинок */
+        /* Галерея */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -236,21 +319,9 @@
             border-radius: 3px;
         }
 
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-body h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: #fff;
-        }
-
-        .card-body p {
-            font-size: 0.9rem;
-            color: #aaa;
-            line-height: 1.5;
-        }
+        .card-body { padding: 20px; }
+        .card-body h3 { margin-bottom: 10px; font-size: 1.2rem; color: #fff; }
+        .card-body p { font-size: 0.9rem; color: #aaa; line-height: 1.5; }
 
         footer {
             text-align: center;
@@ -260,7 +331,7 @@
             margin-top: 60px;
         }
 
-        /* Анимация летящих крошек */
+        /* Крошки */
         #crumbs-container {
             position: fixed;
             top: 0;
@@ -283,11 +354,7 @@
             }
         }
 
-        /* Плавный выезд новых фото */
-        .new-card {
-            animation: slideIn 0.4s ease-out;
-        }
-
+        .new-card { animation: slideIn 0.4s ease-out; }
         @keyframes slideIn {
             from { opacity: 0; transform: scale(0.9) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
@@ -296,53 +363,140 @@
 </head>
 <body>
 
-    <!-- Контейнер для падающего хлеба -->
     <div id="crumbs-container"></div>
 
     <header class="main-header">
         <div class="header-overlay">
-            <span class="badge">RALLIART BREAD DIVISION</span>
+            <span class="badge">MITSUBISHI BREAD EVOLUTION // ГОСТ ТЮНИНГ</span>
             <h1>ЖЕКА <span class="accent-text">LANCER X</span> EDITION</h1>
-            <p class="slogan">«Если Лансер не едет, значит в баке закончился бородинский»</p>
+            <p class="slogan">«Когда Жека заводит Лансер, на местном хлебозаводе активируется резервный конвейер»</p>
             
-            <!-- Панель с приколами -->
             <div class="joke-panel">
                 <button class="btn-joke" onclick="hornSound()">ПОСИГНАЛИТЬ ЖЕКЕ 🎺</button>
                 <button class="btn-joke bread-btn" onclick="feedZheka()">ПОКОРМИТЬ ЖЕКУ ХЛЕБОМ 🍞</button>
+                <button class="btn-joke nitro-btn" onclick="activateNitro()">ЗАКИСЬ ДРОЖЖЕЙ (STAGE 5) 🔥</button>
             </div>
             <div id="horn-output" class="horn-text"></div>
         </div>
     </header>
 
     <main class="container">
+
+        <!-- ИНТЕРАКТИВНЫЙ БОРТОВОЙ КОМПЬЮТЕР -->
+        <section class="dashboard-section">
+            <h2 class="title" style="border-left-color: #ffaa00;">БОРТОВОЙ КОМПЬЮТЕР: ОТДЕЛЕНИЕ ХЛЕБОРОБОТОВ</h2>
+            <div class="dash-grid">
+                
+                <!-- Генератор должностей на хлебозаводе -->
+                <div class="dash-card">
+                    <h3>Твоя должность на Хлебозаводе Ralliart</h3>
+                    <div class="crunch-display" id="job-title" style="font-size: 1.1rem; color: #fff; min-height: 50px; line-height: 1.4;">
+                        Нажми на кнопку, чтобы узнать свою JDM-профессию.
+                    </div>
+                    <button class="btn-dps" onclick="generateJob()">Получить пропуск 🪪</button>
+                </div>
+
+                <!-- Тест: Какой ты хлебный Лансер -->
+                <div class="dash-card bread-side">
+                    <h3>Тест: Какой ты Лансер-Мякиш?</h3>
+                    <div class="dps-text" id="quiz-result" style="font-style: normal; color: #aaa;">Узнай свою комплектацию по версии пекарей.</div>
+                    <button class="btn-crunch" onclick="runQuiz()">Пройти тест 🧠</button>
+                </div>
+
+                <!-- Отмазки для ДПС -->
+                <div class="dash-card">
+                    <h3>Генератор Алиби для ГИБДД</h3>
+                    <div class="dps-text" id="dps-excuse">Инспектор остановил Лансер Жеки за превышение скорости конвейера. Что сказать?</div>
+                    <button class="btn-dps" onclick="generateExcuse()">Выдать базу 🚔</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ТАБЛИЦА РЕГЛАМЕНТНОГО ТО НА ХЛЕБОЗАВОДЕ -->
+        <section class="table-section">
+            <h2 class="title">СЕРВИСНАЯ КНИЖКА ЛАНСЕРА ЖЕКИ (ТО ПО ГОСТУ)</h2>
+            <table class="lancer-table">
+                <thead>
+                    <tr>
+                        <th>Пробег / Замесы</th>
+                        <th>Что менять / Проверять</th>
+                        <th>Влияние на Лансер 10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5 000 км или 30 замесов</td>
+                        <td>Смазка спойлера квасным суслом</td>
+                        <td>Улучшает прижимную силу батона к асфальту</td>
+                    </tr>
+                    <tr>
+                        <td>15 000 км или 100 батонов</td>
+                        <td>Замена воздушного фильтра на Чиабатту</td>
+                        <td>Двигатель начинает дышать с приятным хрустом</td>
+                    </tr>
+                    <tr>
+                        <td>50 000 км или Капиталка печи</td>
+                        <td>Протяжка ГБЦ (Главного Бородинского Цилиндра)</td>
+                        <td>Защищает от заноса в сторону кондитерского отдела</td>
+                    </tr>
+                    <tr>
+                        <td>100 000 км (Сверх-Тюнинг)</td>
+                        <td>Заливка жидкого тостового масла в вариатор</td>
+                        <td>Передачи переключаются плавно, как нарезка Дарницкого</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         
-        <!-- Спеки Жеки -->
+        <!-- МОДИФИКАЦИИ ХЛЕБА (СПЕК-ЛИСТ) -->
         <section class="specs-section">
-            <h2 class="title">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ДРУГА</h2>
+            <h2 class="title">КЛАССИФИКАЦИЯ МОТОРОВ LANCER X ПО СЕМЕЙСТВУ МЯКИШЕВЫХ</h2>
             <div class="specs-grid">
+                
                 <div class="spec-card">
-                    <h3>Комплектация</h3>
-                    <p>Жека Ultimate Premium</p>
+                    <h3>STAGE 0 // СТОК</h3>
+                    <h4>Ржаной Диетический</h4>
+                    <p>Базовый мотор 1.5 литра. Едет медленно, зато полезно для здоровья. Навевает грусть, но Жека держится.</p>
                 </div>
+
                 <div class="spec-card">
-                    <h3>Топливо</h3>
-                    <p>Сухарики с чесноком / Квас</p>
+                    <h3>STAGE 1 // АЭРОДИНАМИКА</h3>
+                    <h4>Воздушная Чиабатта</h4>
+                    <p>Облегченный кузов. Из-за дырочек в тесте вес Лансера снижается на 200 кг. Карбон курит в сторонке по сравнению с хрустящей корочкой.</p>
                 </div>
+
                 <div class="spec-card">
-                    <h3>Любимая тачка</h3>
-                    <p>Lancer X (желательно на максималках)</p>
+                    <h3>STAGE 2 // СУРОВАЯ КЛАССИКА</h3>
+                    <h4>Бородинский Чугун</h4>
+                    <p>Тот самый легендарный 4G63Т. Тяжелый, черный, с ароматом кориандра. Выдерживает давление до 3-х атмосфер и заезд до Ашана.</p>
                 </div>
+
                 <div class="spec-card">
-                    <h3>Главная суперсила</h3>
-                    <p>Может определить свежесть батона по звуку выхлопа</p>
+                    <h3>STAGE 3 // СТАНС И СТИЛЬ</h3>
+                    <h4>Тостовый Квадрат</h4>
+                    <p>Идеальная квадратная геометрия. Машина ложится «пузом на асфальт» (дроп подвески). Жека нарезает углы так же ровно, как тостер режет хлеб.</p>
                 </div>
+
+                <div class="spec-card">
+                    <h3>FACTORY EDITION // ХАРДКОР</h3>
+                    <h4>Дарницкий Заводской</h4>
+                    <p>Суровый обвес прямиком со старого хлебозавода. Обладает прочностью кирпича. Если такой Лансер врежется в столб — столб попросит прощения.</p>
+                </div>
+
+                <div class="spec-card">
+                    <h3>STAGE 4 // СВЕРХВЫХЛОП</h3>
+                    <h4>8 ЗЛАКОВ (Twin-Turbo)</h4>
+                    <p>Максимальный гоночный спек. Восемь цилиндров, восемь злаков, полный привод Super All-Wheel Control. Заряжает Жеку энергией на 800 лошадиных сил.</p>
+                </div>
+
             </div>
         </section>
 
         <!-- Загрузка фото -->
         <section class="upload-section">
-            <h2 class="title">БОРТОВОЙ ЖУРНАЛ (ГАРАЖ ЖЕКИ)</h2>
-            <p class="subtitle">Загрузи новые фотки Жеки или Лансера, и они сразу добавятся в архив!</p>
+            <h2 class="title">СКАНИРОВАНИЕ ТЮНИНГА</h2>
+            <p class="subtitle">Загрузи новое фото, и бортовой компьютер Лансера автоматически добавит его в базу данных Ralliart.</p>
             
             <div class="upload-box">
                 <input type="file" id="photo-loader" accept="image/*" multiple style="display: none;">
@@ -350,31 +504,29 @@
             </div>
         </section>
 
-        <!-- Архив (Галерея) -->
+        <!-- Галерея -->
         <section class="gallery-section">
             <div class="gallery-grid" id="gallery">
                 
-                <!-- Пример 1 -->
                 <div class="card">
                     <div class="img-container">
                         <img src="https://images.unsplash.com/photo-1617469767053-d3b503a0b143?q=80&w=600" alt="Lancer X">
-                        <span class="card-badge">ЭКСКЛЮЗИВ</span>
+                        <span class="card-badge">BORODINSKY RALLIART</span>
                     </div>
                     <div class="card-body">
-                        <h3>Жека и Мечта</h3>
-                        <p>Тот самый Лансер 10. Агрессивный взгляд, спойлер, диски. В багажнике — три булки белого.</p>
+                        <h3>Жека на низком старте</h3>
+                        <p>Lancer X прогревает резину. В баке плещется высокооктановый квас, на пассажирском сиденье ждет своего часа Дарницкий кирпич.</p>
                     </div>
                 </div>
 
-                <!-- Пример 2 -->
                 <div class="card">
                     <div class="img-container">
                         <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600" alt="Хлеб">
-                        <span class="card-badge">STAGE 3 ТЮНИНГ</span>
+                        <span class="card-badge">CHIABATTA STYLE</span>
                     </div>
                     <div class="card-body">
-                        <h3>Идеальный хруст</h3>
-                        <p>Закись азота? Турбина? Нет, свежая горбушка — вот истинный буст Жеки.</p>
+                        <h3>Итальянский выхлоп</h3>
+                        <p>Чиабатта дает идеальный продув выхлопной трассы. Звучит как породистый спорткар на перегазовке.</p>
                     </div>
                 </div>
 
@@ -384,31 +536,33 @@
     </main>
 
     <footer>
-        <p>© 2026 Жека Хлеб-Моторс Спортейшинал. Все права защищены крошками.</p>
+        <p>© 2026 Жека Хлеб-Моторс Спортейшинал. Одобрено Дарницким хлебокомбинатом и инженерами из Токио.</p>
     </footer>
 
     <!-- --- СЦЕНАРИИ (JAVASCRIPT) --- -->
     <script>
-        // 1. Прикол с сигналом
+        // 1. Сигнал (Анекдоты обновлены, текст НЕ исчезает)
         function hornSound() {
             const output = document.getElementById('horn-output');
             const sounds = [
-                "БИИИИИП! (Лансер промчался мимо хлебокомбината!)",
-                "ВВВВВЖУХ! *звук прямотока и летящих крошек*",
-                "ПШШШШ! *сработал турбо-выхлоп на булочке с изюмом*",
-                "БИП-БИП! Жека залетает на парковку за свежим батоном."
+                "🎺 БИ-БИИИП! Тормозит ДПСник Лансер Жеки, открывает багажник, а там 50 буханок Дарницкого. Инспектор: «Это что?». Жека: «Официальный обвес Ralliart, жесткость кузова повышаю! По ГОСТу!»",
+                "🔊 ВВВЖУХ! Приезжает Жека на сервис: «Что-то Лансер дергается». Мастер посмотрел на свечи: «Так у вас в четвертом цилиндре вместо искры дрожжи подошли, мотор пытается испечь Чиабатту!»",
+                "🎺 БИП! Шутка дня: Знаете, почему Жека никогда не застревает в пермских дворах? Потому что у него вместо резины — суровый Бородинский протектор с кориандром, он любой лед грызет!",
+                "🔊 ПШШШШ! Объявление на проходной Хлебозавода: «Срочно требуется водитель на Лансер 10. Обязанности: развозить Тостовый хлеб боком, укладываясь в норматив Stage 3». Жека уже подписал контракт.",
+                "🎺 БИ-БИП! Тормозит инспектор Лансер Жеки: «У вас превышение!». Жека: «Командир, не поверишь, на Хлебозаводе конвейер сорвался, 8 злаков активировались сами, я чисто по инерции лечу!»",
+                "🔊 КРАШ-ТЕСТ: Столкнулись на перекрестке Лансер в обвесе 'Дарница' и бетонный столб. Столб покрылся трещинами, а Дарницкий кирпич на бампере Жеки даже не раскрошился.",
+                "🎺 БИП! Разговаривают два механика: «Слышал, Жека перепрошил Лансер на диетический ржаной эконом?». — «И как?». — «Да как... Машина теперь не едет, зато выхлопная труба пахнет как фитнес-центр!»",
+                "🔊 ТУРБО-ХРУСТ! Жека включает магнитолу в Лансере, а оттуда вместо басов доносится: *ХРУСЬ-ХРУСЬ*. Бортовой компьютер сообщает: 'Чиабатта успешно отбалансирована на спойлере'."
             ];
             const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
             output.innerText = randomSound;
-            output.style.opacity = 1;
-            
-            setTimeout(() => { output.style.opacity = 0; }, 3000);
+            output.style.display = 'block'; // Показываем блок
         }
 
-        // 2. Хлебный ливень
+        // 2. Хлебный дождь
         function feedZheka() {
             const container = document.getElementById('crumbs-container');
-            const breadTypes = ['🍞', '🥖', '🥐', '🥪', '🌾'];
+            const breadTypes = ['🍞', '🥖', '🥐', '🥪', '🥨'];
             
             for(let i = 0; i < 20; i++) {
                 const crumb = document.createElement('div');
@@ -420,13 +574,62 @@
                 crumb.style.animationDuration = Math.random() * 1.5 + 1 + 's';
                 
                 container.appendChild(crumb);
-                
-                // Очистка памяти после падения
                 setTimeout(() => { crumb.remove(); }, 2500);
             }
         }
 
-        // 3. Загрузка фотографий на страницу
+        // 3. Интерактив: Закись дрожжей (Вибрация)
+        function activateNitro() {
+            document.body.classList.add('nitro-active');
+            const output = document.getElementById('horn-output');
+            output.innerText = "🚀 STAGE 5 АКТИВИРОВАН! Дрожжи под давлением 3 бара пошли в интеркулер Лансера! Весь Хлебозавод трясет вместе с сайтом!";
+            output.style.display = 'block';
+
+            setTimeout(() => {
+                document.body.classList.remove('nitro-active');
+            }, 4000);
+        }
+
+        // 4. Генератор должностей на хлебозаводе
+        function generateJob() {
+            const jobs = [
+                "🕵️‍♂️ Старший дегустатор Бородинского обвеса",
+                "👨‍🍳 Настройщик фаз выпекания Чиабатты (Stage 1)",
+                "🏎️ Пилот-испытатель Тостового Лансера на занижении",
+                "👮‍♂️ Генеральный директор Департамента Крошек ГИБДД",
+                "🧱 Главный Инженер по замеру децибел хруста Дарницкого кирпича",
+                "⛽ Менеджер по заправке высокооктановым тестом"
+            ];
+            const randomJob = jobs[Math.floor(Math.random() * jobs.length)];
+            document.getElementById('job-title').innerHTML = `<strong>${randomJob}</strong>`;
+        }
+
+        // 5. Тест: Какой ты Лансер-Мякиш
+        function runQuiz() {
+            const results = [
+                "🍞 Ты — Лансер на 8 злаках! Сложный, мощный, заводишься с полпинка и любишь дрифт у Меги.",
+                "🥖 Ты — Чиабатта-Эволюшн! Облегченный, спойлер весь дырявый, свистишь турбиной на всю улицу.",
+                "🧱 Ты — Дарницкий Кирпич! Надежный, суровый, подвеска жесткая, бампером можешь ломать бетонные блоки.",
+                "🥪 Ты — Тостовый Станс! Квадратный, стильный, лежишь на пузе и не можешь переехать даже крошку хлеба."
+            ];
+            const randomResult = results[Math.floor(Math.random() * results.length)];
+            document.getElementById('quiz-result').innerText = randomResult;
+            document.getElementById('quiz-result').style.color = '#ffaa00';
+        }
+
+        // 6. Отмазки для ДПС
+        function generateExcuse() {
+            const excuses = [
+                "«Товарищ начальник, датчик давления в шинах настроен под плотность Дарницкого хлеба, произошел сбой!»",
+                "«Я ехал медленно, но спойлер затянуло в вентиляцию Хлебозавода!»",
+                "«Мой Лансер работает на Бородинской закваске, а она сегодня дико забродила!»",
+                "«Спешил доставить Чиабатту, пока дырочки внутри нее не закрылись!»"
+            ];
+            const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+            document.getElementById('dps-excuse').innerText = randomExcuse;
+        }
+
+        // 7. Загрузка фото
         const photoLoader = document.getElementById('photo-loader');
         const gallery = document.getElementById('gallery');
 
@@ -442,19 +645,19 @@
                     card.className = 'card new-card';
                     card.innerHTML = `
                         <div class="img-container">
-                            <img src="${event.target.result}" alt="Фото от Жеки">
-                            <span class="card-badge">NEW SPECS</span>
+                            <img src="${event.target.result}" alt="Тюнинг от Жеки">
+                            <span class="card-badge">BAKERY RACING</span>
                         </div>
                         <div class="card-body">
-                            <h3>Заезд №${Math.floor(Math.random() * 900 + 100)}</h3>
-                            <p>Новое фото успешно припарковано в архив. Тюнинг хлебным мякишем дает +15 л.с. к карме.</p>
+                            <h3>Спек-Лист заезда №${Math.floor(Math.random() * 900 + 100)}</h3>
+                            <p>Данные успешно импортированы в ЭБУ Лансера. Прошивка под Тостовый Станс завершена.</p>
                         </div>
                     `;
                     gallery.insertBefore(card, gallery.firstChild);
                 };
                 reader.readAsDataURL(file);
             }
-        }); 
+        });
     </script>
 </body>
 </html>
