@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖЕКА Х LANCE X ХЛЕБ // OFFICIAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- СТИЛИ (CSS) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #141518;
+            color: #e5e5e5;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка в стиле JDM */
+        .main-header {
+            background: linear-gradient(rgba(20, 21, 24, 0.85), rgba(20, 21, 24, 1)), 
+                        url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1200') no-repeat center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ff0033; /* Красный Лансера */
+        }
+
+        .badge {
+            background: #ff0033;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+
+        .main-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .accent-text {
+            color: #ff0033;
+            text-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+        }
+
+        .slogan {
+            font-style: italic;
+            color: #aaa;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Панель интерактивных приколов */
+        .joke-panel {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-joke {
+            background: #22252a;
+            color: #fff;
+            border: 2px solid #ff0033;
+            padding: 12px 24px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+
+        .btn-joke:hover {
+            background: #ff0033;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-joke.bread-btn {
+            border-color: #ffaa00; /* Хлебный цвет */
+        }
+
+        .btn-joke.bread-btn:hover {
+            background: #ffaa00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.6);
+        }
+
+        .horn-text {
+            margin-top: 20px;
+            height: 20px;
+            color: #ffaa00;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        /* Спек-лист Жеки */
+        .specs-section {
+            margin-top: 50px;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-left: 5px solid #ff0033;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .spec-card {
+            background: #1c1e24;
+            padding: 20px;
+            border-radius: 6px;
+            border-bottom: 3px solid #2c303b;
+            transition: border-color 0.3s;
+        }
+
+        .spec-card:hover {
+            border-bottom-color: #ff0033;
+        }
+
+        .spec-card h3 {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .spec-card p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Зона загрузки фото (В гараж) */
+        .upload-section {
+            margin: 60px 0 40px 0;
+            background: #1c1e24;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px dashed #3c404c;
+        }
+
+        .btn-upload {
+            display: inline-block;
+            margin-top: 20px;
+            background: #fff;
+            color: #000;
+            padding: 15px 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-upload:hover {
+            background: #ff0033;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Галерея картинок */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #1c1e24;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,0,51,0.2);
+        }
+
+        .img-container {
+            position: relative;
+            height: 220px;
+            background: #000;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid #ff0033;
+            color: #ff0033;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 60px;
+        }
+
+        /* Анимация летящих крошек */
+        #crumbs-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .crumb {
+            position: absolute;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Плавный выезд новых фото */
+        .new-card {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Контейнер для падающего хлеба -->
+    <div id="crumbs-container"></div>
+
+    <header class="main-header">
+        <div class="header-overlay">
+            <span class="badge">RALLIART BREAD DIVISION</span>
+            <h1>ЖЕКА <span class="accent-text">LANCER X</span> EDITION</h1>
+            <p class="slogan">«Если Лансер не едет, значит в баке закончился бородинский»</p>
+            
+            <!-- Панель с приколами -->
+            <div class="joke-panel">
+                <button class="btn-joke" onclick="hornSound()">ПОСИГНАЛИТЬ ЖЕКЕ 🎺</button>
+                <button class="btn-joke bread-btn" onclick="feedZheka()">ПОКОРМИТЬ ЖЕКУ ХЛЕБОМ 🍞</button>
+            </div>
+            <div id="horn-output" class="horn-text"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Спеки Жеки -->
+        <section class="specs-section">
+            <h2 class="title">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ДРУГА</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Комплектация</h3>
+                    <p>Жека Ultimate Premium</p>
+                </div>
+                <div class="spec-card">
+                    <h3>Топливо</h3>
+                    <p>Сухарики с чесноком / Квас</p>
+                </div>
+                <div class="spec-card">
+                    <h3>Любимая тачка</h3>
+                    <p>Lancer X (желательно на максималках)</p>
+                </div>
+                <div class="spec-card">
+                    <h3>Главная суперсила</h3>
+                    <p>Может определить свежесть батона по звуку выхлопа</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Загрузка фото -->
+        <section class="upload-section">
+            <h2 class="title">БОРТОВОЙ ЖУРНАЛ (ГАРАЖ ЖЕКИ)</h2>
+            <p class="subtitle">Загрузи новые фотки Жеки или Лансера, и они сразу добавятся в архив!</p>
+            
+            <div class="upload-box">
+                <input type="file" id="photo-loader" accept="image/*" multiple style="display: none;">
+                <label for="photo-loader" class="btn-upload">Загнать фото в гараж</label>
+            </div>
+        </section>
+
+        <!-- Архив (Галерея) -->
+        <section class="gallery-section">
+            <div class="gallery-grid" id="gallery">
+                
+                <!-- Пример 1 -->
+                <div class="card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1617469767053-d3b503a0b143?q=80&w=600" alt="Lancer X">
+                        <span class="card-badge">ЭКСКЛЮЗИВ</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Жека и Мечта</h3>
+                        <p>Тот самый Лансер 10. Агрессивный взгляд, спойлер, диски. В багажнике — три булки белого.</p>
+                    </div>
+                </div>
+
+                <!-- Пример 2 -->
+                <div class="card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600" alt="Хлеб">
+                        <span class="card-badge">STAGE 3 ТЮНИНГ</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Идеальный хруст</h3>
+                        <p>Закись азота? Турбина? Нет, свежая горбушка — вот истинный буст Жеки.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Жека Хлеб-Моторс Спортейшинал. Все права защищены крошками.</p>
+    </footer>
+
+    <!-- --- СЦЕНАРИИ (JAVASCRIPT) --- -->
+    <script>
+        // 1. Прикол с сигналом
+        function hornSound() {
+            const output = document.getElementById('horn-output');
+            const sounds = [
+                "БИИИИИП! (Лансер промчался мимо хлебокомбината!)",
+                "ВВВВВЖУХ! *звук прямотока и летящих крошек*",
+                "ПШШШШ! *сработал турбо-выхлоп на булочке с изюмом*",
+                "БИП-БИП! Жека залетает на парковку за свежим батоном."
+            ];
+            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+            output.innerText = randomSound;
+            output.style.opacity = 1;
+            
+            setTimeout(() => { output.style.opacity = 0; }, 3000);
+        }
+
+        // 2. Хлебный ливень
+        function feedZheka() {
+            const container = document.getElementById('crumbs-container');
+            const breadTypes = ['🍞', '🥖', '🥐', '🥪', '🌾'];
+            
+            for(let i = 0; i < 20; i++) {
+                const crumb = document.createElement('div');
+                crumb.className = 'crumb';
+                crumb.innerText = breadTypes[Math.floor(Math.random() * breadTypes.length)];
+                crumb.style.left = Math.random() * 100 + 'vw';
+                crumb.style.top = '-30px';
+                crumb.style.fontSize = Math.random() * 20 + 15 + 'px';
+                crumb.style.animationDuration = Math.random() * 1.5 + 1 + 's';
+                
+                container.appendChild(crumb);
+                
+                // Очистка памяти после падения
+                setTimeout(() => { crumb.remove(); }, 2500);
+            }
+        }
+
+        // 3. Загрузка фотографий на страницу
+        const photoLoader = document.getElementById('photo-loader');
+        const gallery = document.getElementById('gallery');
+
+        photoLoader.addEventListener('change', function(e) {
+            const files = e.target.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (!file.type.startsWith('image/')) continue;
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const card = document.createElement('div');
+                    card.className = 'card new-card';
+                    card.innerHTML = `
+                        <div class="img-container">
+                            <img src="${event.target.result}" alt="Фото от Жеки">
+                            <span class="card-badge">NEW SPECS</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Заезд №${Math.floor(Math.random() * 900 + 100)}</h3>
+                            <p>Новое фото успешно припарковано в архив. Тюнинг хлебным мякишем дает +15 л.с. к карме.</p>
+                        </div>
+                    `;
+                    gallery.insertBefore(card, gallery.firstChild);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
